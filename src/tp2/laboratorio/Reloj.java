@@ -29,12 +29,13 @@ public class Reloj {
 
     public void incrementarHora(int horaMas, int minutoMas) {
         int suma = horaMas * 60 + minutoMas;
-        System.out.println("La hora es: " + hora.plusMinutes(suma));
+        hora=hora.plusMinutes(suma);
+        System.out.println("La hora es: " + hora);
     }
 
     public void incrementarDora(int diasMas) {
-
-        System.out.println("el dia es : " + dia.plusDays(diasMas));
+        dia=dia.plusDays(diasMas);
+        System.out.println("el dia es : " + dia);
     }
 
     public Reloj(int numSerie, int modelo) {
