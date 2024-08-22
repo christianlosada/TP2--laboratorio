@@ -78,8 +78,8 @@ public class Reloj {
     }
 
     public void mostrarPantalla() {
-        System.out.println(" ******** " + hora + " ***********");
-        System.out.println(" ******** " + dia  + " ***********");
+        System.out.println(hora);
+        System.out.println(dia);
     }
    
     public void menu() {
@@ -93,14 +93,11 @@ public class Reloj {
             int res = leer.nextInt();
             int a;
             int b;
-            LocalDate c = dia;
-            double sumaDias;
             switch (res) {
                 case 1:
                     System.out.println("Cuenatos dias desea incrementar?");
                     a = leer.nextInt();
-                    
-                    incrementarDora(a++);
+                    incrementarDora(a);
                     break;
                 case 2:
                     System.out.println("Cuenatas horas deseas incrementar?");
