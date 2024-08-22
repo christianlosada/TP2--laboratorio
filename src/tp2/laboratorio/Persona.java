@@ -12,24 +12,16 @@ import java.util.Scanner;
  * @author Netbook
  */
 public class Persona {
+
     private String nombre;
     private String apellido;
     private double altura;
     private int edad;
     private Reloj reloj;
 
-    Persona() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-   
-    public void usarReloj(){
-        System.out.println("la hora es: " + reloj.getHora());
-        System.out.println("la dia es: " + reloj.getDia());
-        System.out.println("vamos a incrementar 1 dia");
-        reloj.incrementarDora(1);
-        reloj.incrementarHora(0, 1);
-        
+
+    public void usarReloj() {
+        reloj.menu();
     }
 
     public Persona(String nombre, String apellido, double altura, int edad, Reloj reloj) {
@@ -64,8 +56,6 @@ public class Persona {
         this.reloj = reloj;
     }
 
-    
-
     public String getNombre() {
         return nombre;
     }
@@ -81,5 +71,5 @@ public class Persona {
     public void setEdad(int edad) {
         this.edad = edad;
     }
-    
+
 }

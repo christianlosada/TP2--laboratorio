@@ -6,8 +6,8 @@
 package tp2.laboratorio;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Scanner;
 
 /**
  *
@@ -15,31 +15,33 @@ import java.time.LocalTime;
  */
 public class Reloj {
 
-    private LocalDate dia = LocalDate.now();
-    private LocalTime hora= LocalTime.now().withNano(0);
+    Scanner leer = new Scanner(System.in);
+    private LocalDate dia;
+    private LocalTime hora; 
     private int numSerie;
     private int modelo;
 
 //incrementar dia , incrementar hora, limpiar pantalla
-   
-    public void limpiarPantalla(){
-        
-    System.out.flush();  
+    public void limpiarPantalla() {
+        this.dia = LocalDate.now();
+        this.hora= LocalTime.now().withNano(0);
+    }
 
-}
-    
-
-    public void incrementarHora(int horaMas, int minutoMas){
-        int suma= horaMas*60+minutoMas;
+    public void incrementarHora(int horaMas, int minutoMas) {
+        int suma = horaMas * 60 + minutoMas;
         System.out.println("La hora es: " + hora.plusMinutes(suma));
     }
-      public void incrementarDora(int diasMas){
-       
+
+    public void incrementarDora(int diasMas) {
+
         System.out.println("el dia es : " + dia.plusDays(diasMas));
     }
+
     public Reloj(int numSerie, int modelo) {
         this.numSerie = numSerie;
         this.modelo = modelo;
+        this.dia = LocalDate.now();
+        this.hora=LocalTime.now().withNano(0);
     }
 
     public LocalTime getHora() {
@@ -50,9 +52,6 @@ public class Reloj {
         this.hora = hora;
     }
 
-   
-  
-
     public LocalDate getDia() {
         return dia;
     }
@@ -60,8 +59,6 @@ public class Reloj {
     public void setDia(LocalDate dia) {
         this.dia = dia;
     }
-
-   
 
     public int getNumSerie() {
         return numSerie;
@@ -79,4 +76,54 @@ public class Reloj {
         this.modelo = modelo;
     }
 
+    public void mostrarPantalla() {
+        System.out.println(hora);
+        System.out.println(dia);
+    }
+   
+    public void menu() {
+        boolean bandera = false;
+        mostrarPantalla();
+        do {
+            System.out.println("Seleccione la opcion");
+            System.out.println("1-Incrementar Dia");
+            System.out.println("2-Incrementar Hora");
+            System.out.println("3-Incrementar Limpiar Pantalla");
+            int res = leer.nextInt();
+            int a;
+            int b;
+            switch (res) {
+                case 1:
+                    System.out.println("Cuenatos dias desea incrementar?");
+                    a = leer.nextInt();
+                    incrementarDora(a);
+                    break;
+                case 2:
+                    System.out.println("Cuenatas horas deseas incrementar?");
+                    System.out.println("Ingrese la cantidad de horas");
+                    a = leer.nextInt();
+                    System.out.println("Ingrese la cantidad de minutos");
+                    b = leer.nextInt();
+                    incrementarHora(a, b);
+                    break;
+                case 3:
+                    limpiarPantalla();
+                    mostrarPantalla();
+                    break;
+                default:
+                    System.out.println("");
+            }
+            leer.nextLine();
+            System.out.println("desea continuar?");
+            System.out.println("S/N");
+            String salida = leer.nextLine();
+            if (salida.equalsIgnoreCase("s")) {
+                bandera = true;
+            } else if (salida.equalsIgnoreCase("n")) {
+                bandera = false;
+            } else {
+                System.out.println("**** ERROR");
+            }
+        } while (bandera);
+    }
 }
